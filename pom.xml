@@ -4,7 +4,7 @@
 
     <groupId>com.github.sushantmimani</groupId>
     <artifactId>HelloWorld</artifactId>
-    <version>0.6.5</version>
+    <version>0.6.6</version>
 
     <name>test-deploy</name>
     <description>A demo for deployment to the Central Repository via OSSRH</description>
@@ -120,7 +120,7 @@
                     <plugin>
                         <groupId>org.sonatype.plugins</groupId>
                         <artifactId>nexus-staging-maven-plugin</artifactId>
-                        <version>1.6.8</version>
+                        <version>1.6.13</version>
                         <extensions>true</extensions>
                         <configuration>
                             <serverId>ossrh</serverId>
@@ -131,14 +131,7 @@
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-gpg-plugin</artifactId>
-                        <version>1.6</version>
-                        <configuration>
-                            <!-- Prevent gpg from using pinentry programs -->
-                            <gpgArguments>
-                                <arg>--pinentry-mode</arg>
-                                <arg>loopback</arg>
-                            </gpgArguments>
-                        </configuration>
+                        <version>3.0.1</version>
                         <executions>
                             <execution>
                                 <id>sign-artifacts</id>
