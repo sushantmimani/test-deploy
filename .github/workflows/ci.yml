@@ -5,7 +5,29 @@ on:
 
 jobs:
   #### Java
+  build-test-java:
+    name: Build Java Application
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout the repository
+        uses: actions/checkout@ac593985615ec2ede58e132d2e21d2b1cbd6127c
+      - name: Set up Java
+        uses: actions/setup-java@8f12c5c4d1ebd18bf4b7a51a1b0b912633f0bc61
+        with:
+          java-version: '17'
+          distribution: 'adopt'
+      - name: Cache Java packages
+        uses: actions/cache@2b5a782c6414f96354f95902141714b127692d1e
+        with:
+          path: ~/.m2
+          key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}-v1
+          restore-keys: ${{ runner.os }}-m2-
+      - name: Build
+        run: |
+          mvn -U compile
+
   release-test-deploy:
+    needs: build-test-java
     name: Release
     runs-on: ubuntu-latest
     steps:
