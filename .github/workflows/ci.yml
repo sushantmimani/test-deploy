@@ -43,12 +43,12 @@ jobs:
           server-password: MAVEN_PASSWORD
           gpg-private-key: ${{ secrets.MAVEN_GPG_PRIVATE_KEY }} # Value of the GPG private key to import
           gpg-passphrase: MAVEN_GPG_PASSPHRASE # env variable for GPG private key passphrase
-      - name: Cache Java packages
-        uses: actions/cache@2b5a782c6414f96354f95902141714b127692d1e
-        with:
-          path: ~/.m2
-          key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}-v1
-          restore-keys: ${{ runner.os }}-m2-
+#      - name: Cache Java packages
+#        uses: actions/cache@2b5a782c6414f96354f95902141714b127692d1e
+#        with:
+#          path: ~/.m2
+#          key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}-v1
+#          restore-keys: ${{ runner.os }}-m2-
       - name: Publish
         run: |
           mvn -DskipTests deploy -Prelease
