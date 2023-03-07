@@ -18,6 +18,6 @@ jobs:
         uses: devmasx/merge-branch@5db181cdddbc510e300b5ff615a18b6bddcfcb4b
         with:
           type: now
-          head_to_merge: main
-          target_branch: ${{ github.event.inputs.target }}
+          head_to_merge: ${{ github.event.inputs.target }}
+          target_branch: main
           github_token: ${{ secrets.MERGE_TOKEN }}
